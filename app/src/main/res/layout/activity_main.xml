@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +8,52 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvTitle"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#f20"
+        android:textSize="40sp"
+        android:text="GAME LOTO"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:maxLength="6"
+        android:id="@+id/edtSomin"
+        android:hint="Nhập số min"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:maxLength="6"
+        android:id="@+id/edtSomax"
+        android:hint="Nhập số max"
+        android:inputType="number"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/edtSomin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnRandom"
+        android:text="Random"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/edtSomax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textColor="#D81B60"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        tools:text="1-2-3-4-5-6-7"
+        android:id="@+id/tvKetqua"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/btnRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
