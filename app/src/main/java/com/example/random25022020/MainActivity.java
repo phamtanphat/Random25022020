@@ -1,14 +1,15 @@
 package com.example.random25022020;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
-import java.util.regex.Matcher;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +32,24 @@ public class MainActivity extends AppCompatActivity {
 //        int b = 6;
 //        int value = Math.max(a,b);
 //        Log.d("BBB",String.valueOf(value));
-        double value = Math.floor(Math.random()  * 6);
-        Log.d("BBB",String.valueOf(value));
+//        double value = Math.floor(Math.random()  * 6);
+//        Log.d("BBB",String.valueOf(value));
 
+        // 0 - 5
+//        Random random = new Random();
+//        for (int i = 0 ; i < 100 ; i++){
+//            int value = random.nextInt(7) - random.nextInt(7);
+//            if (value == 6 || value == -6){
+//                count++;
+//            }
+//        }
+
+//        for (int i = 0 ; i < 100 ; i++){
+//            double value = Math.ceil(Math.random() * (-7)) + Math.floor(Math.random() * (7));
+//            if (value == 6 || value == -6){
+//                count++;
+//            }
+//        }
+//        Log.d("BBB",count+"");
     }
 }
