@@ -17,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
     EditText mEdtSomin,mEdtSomax;
     Button mBtnRandom;
     TextView mTvKetqua;
-    String mTextmin,mTxtmax;
-    int mSmin,mSmax;
+    String mTextmin,mTextmax;
+    int mSmin,mSmax,mValue;
+    Random mRandom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mTextmin = mEdtSomin.getText().toString();
-                mTxtmax = mEdtSomax.getText().toString();
+                mTextmax = mEdtSomax.getText().toString();
 
-                if (!mTextmin.equals("") || !mTxtmax.equals("")){
+                if (mTextmin.equals("") || mTextmax.equals("")){
                     Toast.makeText(MainActivity.this, "Bạn nhập thiếu thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 mSmin = Integer.parseInt(mTextmin);
-                mSmax = Integer.parseInt(mTxtmax);
+                mSmax = Integer.parseInt(mTextmax);
 
                 // Viet dieu kien theo if else
 //                if (smin > smax){
@@ -51,7 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
                 mSmax = mSmin > mSmax ? mSmin + 1 : mSmax;
 
+                mEdtSomax.setText(String.valueOf(mSmax));
 
+                mRandom = new Random();
+
+                mValue = mRandom.nextInt(mSmax - mSmin + 1) + mSmin;
+
+                mTvKetqua.setText(String.valueOf(mValue));
 
             }
         });
