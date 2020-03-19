@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     String mTextmin,mTextmax;
     int mSmin,mSmax,mValue;
     Random mRandom;
+    String mTvValue = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,29 @@ public class MainActivity extends AppCompatActivity {
         mEdtSomin = findViewById(R.id.edtSomin);
         mBtnRandom = findViewById(R.id.btnRandom);
         mTvKetqua = findViewById(R.id.tvKetqua);
+
+
+        // Khai bao mang
+        ArrayList<Integer> arrayNumber = new ArrayList<>();
+
+        // Thêm dữ liệu
+        arrayNumber.add(10); // index = 0
+        arrayNumber.add(9); // index = 1
+        arrayNumber.add(8); // index = 2
+
+        // Lay kích thước mảng
+//        Log.d("BBB",String.valueOf(arrayNumber.size()));
+
+        // Lấy giá trị phần tử theo vị trí
+//        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
+
+        // xóa
+//        arrayNumber.remove(0);
+//        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
+
+        // Sửa
+        arrayNumber.set(0,1);
+        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
 
         mBtnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
                 mValue = mRandom.nextInt(mSmax - mSmin + 1) + mSmin;
 
-                mTvKetqua.setText(String.valueOf(mValue));
+//                mTvValue += mValue + " - ";
+//                "" + 5 = > "5"
+//                        "5" + "6" = "56"
+                mTvKetqua.append(mValue + " - ");
 
             }
         });
