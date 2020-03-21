@@ -15,13 +15,15 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText mEdtSomin,mEdtSomax;
-    Button mBtnRandom;
+    EditText mEdtSomin, mEdtSomax;
+    Button mBtnRandom, mButtonAddBound;
     TextView mTvKetqua;
-    String mTextmin,mTextmax;
-    int mSmin,mSmax,mValue;
+    String mTextmin, mTextmax;
+    int mSmin, mSmax, mValue;
+    ArrayList<Integer> mArrayNumbers;
     Random mRandom;
     String mTvValue = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mEdtSomin = findViewById(R.id.edtSomin);
         mBtnRandom = findViewById(R.id.btnRandom);
         mTvKetqua = findViewById(R.id.tvKetqua);
+        mButtonAddBound = findViewById(R.id.buttonAddBound);
+        mArrayNumbers = new ArrayList<>();
 
         // Task 1 : Random các số không được trùng với nhau
         // Tạo mảng chưa các số từ số min tới sô max
@@ -39,38 +43,62 @@ public class MainActivity extends AppCompatActivity {
         // Xóa số này trong mảng để không xuất hiện
         // Task 2 : Khi hết sô random thì thông báo
 
-        mBtnRandom.setOnClickListener(new View.OnClickListener() {
+        mButtonAddBound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mArrayNumbers.clear();
                 mTextmin = mEdtSomin.getText().toString();
                 mTextmax = mEdtSomax.getText().toString();
 
-                if (mTextmin.equals("") || mTextmax.equals("")){
+                if (mTextmin.equals("") || mTextmax.equals("")) {
                     Toast.makeText(MainActivity.this, "Bạn nhập thiếu thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 mSmin = Integer.parseInt(mTextmin);
                 mSmax = Integer.parseInt(mTextmax);
+
+                mSmax = mSmin >= mSmax ? mSmin + 1 : mSmax;
+                mEdtSomax.setText(String.valueOf(mSmax));
+
+                // int count = mSmin;
+                //                while (count <= mSmax){
+                //                    mArrayNumbers.add(count++);
+                //                }
+                for (int i = mSmin; i <= mSmax; i++) {
+                    mArrayNumbers.add(i);
+                }
+                if (mArrayNumbers.size() > 1){
+                    Toast.makeText(MainActivity.this, "Thêm sô thành công", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Thêm só thất bại", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        mBtnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
 
                 // Viet dieu kien theo if else
 //                if (smin > smax){
 //                    smax = smin + 1;
 //                }
                 // Viet dieu kien theo toan tu 3 ngoi
-
-                mSmax = mSmin > mSmax ? mSmin + 1 : mSmax;
-
-                mEdtSomax.setText(String.valueOf(mSmax));
-
-                mRandom = new Random();
-
-                mValue = mRandom.nextInt(mSmax - mSmin + 1) + mSmin;
+//
+//                mSmax = mSmin > mSmax ? mSmin + 1 : mSmax;
+//
+//                mEdtSomax.setText(String.valueOf(mSmax));
+//
+//                mRandom = new Random();
+//
+//                mValue = mRandom.nextInt(mSmax - mSmin + 1) + mSmin;
 
 //                mTvValue += mValue + " - ";
 //                "" + 5 = > "5"
 //                        "5" + "6" = "56"
-                mTvKetqua.append(mValue + " - ");
+//                mTvKetqua.append(mValue + " - ");
 
             }
         });
