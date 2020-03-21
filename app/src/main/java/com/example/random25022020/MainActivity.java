@@ -32,28 +32,12 @@ public class MainActivity extends AppCompatActivity {
         mBtnRandom = findViewById(R.id.btnRandom);
         mTvKetqua = findViewById(R.id.tvKetqua);
 
-
-        // Khai bao mang
-        ArrayList<Integer> arrayNumber = new ArrayList<>();
-
-        // Thêm dữ liệu
-        arrayNumber.add(10); // index = 0
-        arrayNumber.add(9); // index = 1
-        arrayNumber.add(8); // index = 2
-
-        // Lay kích thước mảng
-//        Log.d("BBB",String.valueOf(arrayNumber.size()));
-
-        // Lấy giá trị phần tử theo vị trí
-//        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
-
-        // xóa
-//        arrayNumber.remove(0);
-//        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
-
-        // Sửa
-        arrayNumber.set(0,1);
-        Log.d("BBB",String.valueOf(arrayNumber.get(0)));
+        // Task 1 : Random các số không được trùng với nhau
+        // Tạo mảng chưa các số từ số min tới sô max
+        // Thực hiện random lấy số ngẫu nhiên trong mảng
+        // Hiển thị số sau khi random
+        // Xóa số này trong mảng để không xuất hiện
+        // Task 2 : Khi hết sô random thì thông báo
 
         mBtnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
