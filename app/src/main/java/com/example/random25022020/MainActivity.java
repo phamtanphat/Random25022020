@@ -84,7 +84,15 @@ public class MainActivity extends AppCompatActivity {
         mBtnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(MainActivity.this, "Reset thành công", Toast.LENGTH_SHORT).show();
+                mEdtSomin.setEnabled(true);
+                mEdtSomax.setEnabled(true);
+                mButtonAddBound.setEnabled(true);
+                mEdtSomin.setText("");
+                mEdtSomax.setText("");
+                mArrayNumbers.clear();
+                mTvKetqua.setText("");
+                mEdtSomin.requestFocus();
             }
         });
 
