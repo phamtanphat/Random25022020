@@ -47,6 +47,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
+        android:id="@+id/buttonReset"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/edtSomax"
+        android:text="Reset bound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
         android:id="@+id/btnRandom"
         android:text="Random"
         android:layout_centerHorizontal="true"

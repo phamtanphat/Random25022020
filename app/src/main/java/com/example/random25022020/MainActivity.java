@@ -16,13 +16,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     EditText mEdtSomin, mEdtSomax;
-    Button mBtnRandom, mButtonAddBound;
+    Button mBtnRandom, mButtonAddBound, mBtnReset;
     TextView mTvKetqua;
     String mTextmin, mTextmax;
-    int mSmin, mSmax, mValue;
+    int mSmin, mSmax;
     ArrayList<Integer> mArrayNumbers;
     Random mRandom;
-    String mTvValue = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnRandom = findViewById(R.id.btnRandom);
         mTvKetqua = findViewById(R.id.tvKetqua);
         mButtonAddBound = findViewById(R.id.buttonAddBound);
+        mBtnReset = findViewById(R.id.buttonReset);
         mArrayNumbers = new ArrayList<>();
 
         // Task 1 : Random các số không được trùng với nhau
@@ -46,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
         mButtonAddBound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Tránh tình trạng click nhiều lần giá trị mảng add giá trị cũ cho nen clear để lấy giá trị mới
                 mArrayNumbers.clear();
+
+                //
                 mTextmin = mEdtSomin.getText().toString();
                 mTextmax = mEdtSomax.getText().toString();
 
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 mSmax = Integer.parseInt(mTextmax);
 
                 mSmax = mSmin >= mSmax ? mSmin + 1 : mSmax;
-                mEdtSomax.setText(String.valueOf(mSmax));
+//                mEdtSomax.setText(String.valueOf(mSmax));
 
                 // int count = mSmin;
                 //                while (count <= mSmax){
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                     mArrayNumbers.add(i);
                 }
                 if (mArrayNumbers.size() > 1){
+                    mEdtSomin.setEnabled(false);
+                    mEdtSomax.setEnabled(false);
+                    mButtonAddBound.setEnabled(false);
                     Toast.makeText(MainActivity.this, "Thêm sô thành công", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(MainActivity.this, "Thêm só thất bại", Toast.LENGTH_SHORT).show();
@@ -75,31 +81,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        mBtnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         mBtnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mArrayNumbers.size() > 0 ){
+                    mRandom = new Random();
+                    int index = mRandom.nextInt(mArrayNumbers.size());
+                    int value = mArrayNumbers.get(index);
+                    if (mArrayNumbers.size() == 1){
+                        mTvKetqua.append(value+"");
+                    }else{
+                        mTvKetqua.append(value + " - ");
+                    }
 
+                    mArrayNumbers.remove(index);
+                }else{
+                    Toast.makeText(MainActivity.this, "Hết số random", Toast.LENGTH_SHORT).show();
+                }
 
-                // Viet dieu kien theo if else
-//                if (smin > smax){
-//                    smax = smin + 1;
-//                }
-                // Viet dieu kien theo toan tu 3 ngoi
-//
-//                mSmax = mSmin > mSmax ? mSmin + 1 : mSmax;
-//
-//                mEdtSomax.setText(String.valueOf(mSmax));
-//
-//                mRandom = new Random();
-//
-//                mValue = mRandom.nextInt(mSmax - mSmin + 1) + mSmin;
-
-//                mTvValue += mValue + " - ";
-//                "" + 5 = > "5"
-//                        "5" + "6" = "56"
-//                mTvKetqua.append(mValue + " - ");
-
+                // Task 2 : Vẽ thêm 1 button ResetBound
+//                + Clear dữ liệu trong mảng
+//                + Clear dữ liệu trong 2 edittext
+//                + Bật enable cho mButtonAddBound , mEdtSomax , mEdtSomin
             }
         });
 
